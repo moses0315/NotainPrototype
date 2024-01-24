@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3y4lhim2bfnr"
+path="res://.godot/imported/y2meta.com - Handel - Messiah (320 kbps).mp3-d6101286fb14ac35816fcbfc396fca4a.mp3str"
+
+[deps]
+
+source_file="res://BackgroundAssets/y2meta.com - Handel - Messiah (320 kbps).mp3"
+dest_files=["res://.godot/imported/y2meta.com - Handel - Messiah (320 kbps).mp3-d6101286fb14ac35816fcbfc396fca4a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

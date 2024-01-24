@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckibsawyh1hgr"
+path="res://.godot/imported/Zombie_hit (online-audio-converter.com).mp3-8ac80132ab5ae8b99c772a46526a607e.mp3str"
+
+[deps]
+
+source_file="res://BackgroundAssets/Zombie_hit (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/Zombie_hit (online-audio-converter.com).mp3-8ac80132ab5ae8b99c772a46526a607e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

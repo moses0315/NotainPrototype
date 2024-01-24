@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fphq2rgn2n48"
+path="res://.godot/imported/Mendelssohn - Midsummer Night's Dream (320 kbps).mp3-731829bbcb581222bb0f6ffe4ac57c87.mp3str"
+
+[deps]
+
+source_file="res://BackgroundAssets/Mendelssohn - Midsummer Night's Dream (320 kbps).mp3"
+dest_files=["res://.godot/imported/Mendelssohn - Midsummer Night's Dream (320 kbps).mp3-731829bbcb581222bb0f6ffe4ac57c87.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

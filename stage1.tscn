@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://c06q5icx1hwup"]
+
+[ext_resource type="Script" path="res://combat.gd" id="1_5ihv1"]
+[ext_resource type="AudioStream" uid="uid://di60k1biym4wi" path="res://BackgroundAssets/Morning Mood (by Grieg) - Grieg.mp3" id="2_hs6t8"]
+[ext_resource type="AudioStream" uid="uid://d3lbp08fscivo" path="res://BackgroundAssets/Messiah(start).mp3" id="3_15bbh"]
+[ext_resource type="AudioStream" uid="uid://3y4lhim2bfnr" path="res://BackgroundAssets/y2meta.com - Handel - Messiah (320 kbps).mp3" id="4_08pk5"]
+[ext_resource type="Texture2D" uid="uid://bld4dk08n8bgt" path="res://BackgroundAssets/BackImage/tree-2916763.png" id="5_e1ifx"]
+[ext_resource type="Texture2D" uid="uid://budsth4oq8n8q" path="res://BackgroundAssets/BackImage/beautiful-natural-landscape - 복사본.png" id="6_88x8i"]
+[ext_resource type="PackedScene" uid="uid://cixyb3pqegowr" path="res://enemy_slow.tscn" id="7_wb3g2"]
+[ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://player.tscn" id="8_7kvg7"]
+[ext_resource type="PackedScene" uid="uid://c18xgpf54aevr" path="res://enemy_fast.tscn" id="9_r3clg"]
+[ext_resource type="PackedScene" uid="uid://luwhnlnxfk0a" path="res://enemy_short.tscn" id="10_h5skg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjwg"]
+size = Vector2(217, 625)
+
+[node name="Stage1" type="Node2D"]
+script = ExtResource("1_5ihv1")
+stage_number = 1
+
+[node name="Tutorial" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 217.0
+offset_right = 1104.0
+offset_bottom = 498.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "MOVE: A,D,←,→
+ATTACK: S,↓,Space
+"
+
+[node name="Tutorial2" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 217.0
+offset_right = 953.0
+offset_bottom = 634.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "
+
+Tip: Hit and Run"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hs6t8")
+autoplay = true
+
+[node name="DeadBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_15bbh")
+
+[node name="ClearBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_08pk5")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-87.5, 232)
+shape = SubResource("RectangleShape2D_0hjwg")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -5)
+motion_mirroring = Vector2(1500, 0)
+
+[node name="Lone-tree-1934897" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_e1ifx")
+centered = false
+
+[node name="Lone-tree-1934897-복사본" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(750, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_e1ifx")
+centered = false
+flip_h = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -99
+visible = false
+
+[node name="PlayerHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_bottom = 0.333333
+offset_right = 34.0
+offset_bottom = 432.0
+value = 30.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("6_88x8i")
+metadata/_edit_use_anchors_ = true
+
+[node name="EnemyHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 1118.0
+offset_right = 1152.0
+offset_bottom = 648.0
+value = 70.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("6_88x8i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemySlow" parent="Enemies" instance=ExtResource("7_wb3g2")]
+position = Vector2(1152, 320)
+
+[node name="EnemyFast" parent="Enemies" instance=ExtResource("9_r3clg")]
+position = Vector2(1693, 320)
+
+[node name="EnemyShort" parent="Enemies" instance=ExtResource("10_h5skg")]
+position = Vector2(2245, 320)
+
+[node name="Player" parent="." instance=ExtResource("8_7kvg7")]
+position = Vector2(270, 320)
