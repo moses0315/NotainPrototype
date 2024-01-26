@@ -498,16 +498,18 @@ libraries = {
 autoplay = "idle"
 
 [node name="Healthbar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
 offset_left = -15.0
 offset_top = 32.0
 offset_right = 15.0
-offset_bottom = 36.0
+offset_bottom = 37.0
 value = 40.0
+show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 limit_left = 0
-limit_bottom = 440
+limit_bottom = 648
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

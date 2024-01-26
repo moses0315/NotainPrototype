@@ -14,8 +14,8 @@ func _process(delta):
 	#Play DeadBGM
 	if $Player.is_dead and not is_player_dead:
 		$BGM.stop()
-		$ClearBGM.stop()
-		$DeadBGM.play()
+		#$ClearBGM.stop()
+		#$DeadBGM.play()
 		is_player_dead = true
 		clear = false
 		await get_tree().create_timer(3).timeout
@@ -32,8 +32,8 @@ func _process(delta):
 		else:
 			clear = true
 	if clear:
-		$BGM.stop()
-		$ClearBGM.play()
+		#$BGM.stop()
+		#$ClearBGM.play()
 		if stage_number == Savefile.current_stage:
 			Savefile.current_stage +=1
 			SaveLoad.saveGame()

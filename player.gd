@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 
-const speed = 150.0
+const speed = 250
 
 var health = 200
 var attack_power = 10
