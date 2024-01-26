@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var player_healthbar = $Healthbar
-@onready var enemy_healthbar = $CanvasLayer/EnemyHealthbar
+@onready var healthbar = $Healthbar
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 
@@ -16,10 +15,10 @@ var is_dead = false
 
 func _ready():
 	$AnimatedSprite2D/AttackArea2D/CollisionShape2D.disabled = true
-	player_healthbar.max_value = health
+	healthbar.max_value = health
 	
 func _physics_process(delta):
-	player_healthbar.value = health
+	healthbar.value = health
 	if is_dead:
 		return
 
@@ -69,8 +68,6 @@ func take_damage(damage):
 
 func _on_attack_area_2d_body_entered(body):
 	body.take_damage(attack_power)
-	enemy_healthbar.max_value = body.max_health
-	enemy_healthbar.value = body.health
 	$MissSound.stop()
 	$HitSound.play()
 

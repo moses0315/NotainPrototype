@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cixyb3pqegowr"]
+[gd_scene load_steps=58 format=3 uid="uid://cixyb3pqegowr"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_xv4r6"]
 [ext_resource type="Texture2D" uid="uid://b7bwflnnxrhok" path="res://EnemyAssets/enemy_slow/_Attack2NoMovement.png" id="2_wyxve"]
@@ -6,11 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cp67npwllw84e" path="res://EnemyAssets/enemy_slow/_Hit.png" id="4_umscf"]
 [ext_resource type="Texture2D" uid="uid://dxh78ms0p7nw6" path="res://EnemyAssets/enemy_slow/_Idle.png" id="5_kxjgl"]
 [ext_resource type="Texture2D" uid="uid://dq7coej543ywk" path="res://EnemyAssets/enemy_slow/_Run.png" id="6_h130r"]
-[ext_resource type="Texture2D" uid="uid://dlyp20463jomn" path="res://BackgroundAssets/BackImage/trees-4830285.png" id="7_iuuc4"]
-[ext_resource type="AudioStream" uid="uid://xcp4mvusf5i5" path="res://26_sword_hit_2.wav" id="7_tnfah"]
-[ext_resource type="AudioStream" uid="uid://by8n67u15as6v" path="res://27_sword_miss_2.wav" id="8_cibqn"]
-[ext_resource type="Texture2D" uid="uid://bebtq3vcnii1j" path="res://BackgroundAssets/Healthbar/healthbar2.png" id="8_qlalu"]
-[ext_resource type="AudioStream" uid="uid://ckibsawyh1hgr" path="res://BackgroundAssets/Zombie_hit (online-audio-converter.com).mp3" id="11_o1g5n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kimi3"]
 size = Vector2(20, 64)
@@ -579,15 +574,12 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Healthbar" type="TextureProgressBar" parent="."]
+[node name="Healthbar" type="ProgressBar" parent="."]
 offset_left = -12.0
 offset_top = 32.0
 offset_right = 12.0
 offset_bottom = 35.0
 value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("7_iuuc4")
-texture_progress = ExtResource("8_qlalu")
 
 [node name="PlayerDettectionArea2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -602,15 +594,12 @@ collision_layer = 0
 shape = SubResource("RectangleShape2D_1io5t")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_tnfah")
 volume_db = -10.0
 
 [node name="MissSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_cibqn")
 volume_db = -10.0
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_o1g5n")
 volume_db = -10.0
 
 [connection signal="body_entered" from="AnimatedSprite2D/AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]

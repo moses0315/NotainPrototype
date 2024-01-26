@@ -1,15 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cee4l8k4dumsq"]
+[gd_scene load_steps=6 format=3 uid="uid://cee4l8k4dumsq"]
 
 [ext_resource type="Script" path="res://combat.gd" id="1_2u38w"]
-[ext_resource type="AudioStream" uid="uid://di60k1biym4wi" path="res://BackgroundAssets/Morning Mood (by Grieg) - Grieg.mp3" id="2_ihk2f"]
-[ext_resource type="AudioStream" uid="uid://d3lbp08fscivo" path="res://BackgroundAssets/Messiah(start).mp3" id="3_frrc5"]
-[ext_resource type="AudioStream" uid="uid://3y4lhim2bfnr" path="res://BackgroundAssets/y2meta.com - Handel - Messiah (320 kbps).mp3" id="4_yuc31"]
-[ext_resource type="Texture2D" uid="uid://dlyp20463jomn" path="res://BackgroundAssets/BackImage/trees-4830285.png" id="5_tjgwl"]
-[ext_resource type="Texture2D" uid="uid://budsth4oq8n8q" path="res://BackgroundAssets/BackImage/beautiful-natural-landscape - 복사본.png" id="6_0k1oq"]
-[ext_resource type="PackedScene" uid="uid://luwhnlnxfk0a" path="res://enemy_short.tscn" id="8_a781b"]
+[ext_resource type="AudioStream" uid="uid://b2osp4gy5g37y" path="res://BackgroundAssets/music/cyberpunk-street.mp3" id="2_q10j6"]
 [ext_resource type="PackedScene" uid="uid://cixyb3pqegowr" path="res://enemy_slow.tscn" id="8_w0d6b"]
 [ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://player.tscn" id="8_w8dl0"]
-[ext_resource type="PackedScene" uid="uid://c18xgpf54aevr" path="res://enemy_fast.tscn" id="9_fp6py"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjwg"]
 size = Vector2(217, 625)
@@ -47,14 +41,14 @@ text = "
 Tip: Hit and Run"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ihk2f")
+stream = ExtResource("2_q10j6")
 autoplay = true
 
 [node name="DeadBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_frrc5")
+stream = ExtResource("2_q10j6")
 
 [node name="ClearBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_yuc31")
+stream = ExtResource("2_q10j6")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -70,74 +64,10 @@ shape = SubResource("RectangleShape2D_0hjwg")
 position = Vector2(0, -41)
 motion_mirroring = Vector2(1500, 0)
 
-[node name="Lone-tree-1934897" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(0, 3.05176e-05)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_tjgwl")
-centered = false
-metadata/_edit_lock_ = true
-
-[node name="Lone-tree-1934897-복사본" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(750, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_tjgwl")
-centered = false
-flip_h = true
-metadata/_edit_lock_ = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -99
-visible = false
-
-[node name="PlayerHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_bottom = 0.333333
-offset_right = 34.0
-offset_bottom = 432.0
-value = 30.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = ExtResource("6_0k1oq")
-metadata/_edit_use_anchors_ = true
-
-[node name="EnemyHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 1118.0
-offset_right = 1152.0
-offset_bottom = 648.0
-value = 70.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = ExtResource("6_0k1oq")
-metadata/_edit_use_anchors_ = true
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemySlow" parent="Enemies" instance=ExtResource("8_w0d6b")]
 position = Vector2(-345, 320)
-
-[node name="EnemyShort2" parent="Enemies" instance=ExtResource("8_a781b")]
-position = Vector2(1047, 320)
-
-[node name="EnemySlow2" parent="Enemies" instance=ExtResource("8_w0d6b")]
-position = Vector2(1047, 320)
-
-[node name="EnemyFast" parent="Enemies" instance=ExtResource("9_fp6py")]
-position = Vector2(1047, 320)
-
-[node name="EnemyShort" parent="Enemies" instance=ExtResource("8_a781b")]
-position = Vector2(2060, 320)
-
-[node name="EnemyFast2" parent="Enemies" instance=ExtResource("9_fp6py")]
-position = Vector2(2803, 320)
-
-[node name="EnemyFast3" parent="Enemies" instance=ExtResource("9_fp6py")]
-position = Vector2(3090, 320)
-
-[node name="EnemySlow4" parent="Enemies" instance=ExtResource("8_w0d6b")]
-position = Vector2(3090, 320)
-
-[node name="EnemySlow3" parent="Enemies" instance=ExtResource("8_w0d6b")]
-position = Vector2(2060, 320)
 
 [node name="Player" parent="." instance=ExtResource("8_w8dl0")]
 position = Vector2(351, 320)

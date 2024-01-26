@@ -1,19 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://rye083gfdwpb"]
+[gd_scene load_steps=46 format=3 uid="uid://rye083gfdwpb"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0nf2a"]
-[ext_resource type="Texture2D" uid="uid://7ktl42bmuvwq" path="res://BackgroundAssets/Healthbar/tolis-dianellos-p3vPLYV9Nyc-unsplash.png" id="2_8s7jw"]
 [ext_resource type="Texture2D" uid="uid://dlt3pboh1arvd" path="res://PlayerAssets/Attacks.png" id="2_apewh"]
-[ext_resource type="Texture2D" uid="uid://hepcxdugg0tr" path="res://BackgroundAssets/Healthbar/francesco-ungaro-nlqqldluDBw-unsplash.png" id="3_1v0vg"]
 [ext_resource type="Texture2D" uid="uid://bwhrwrwbpudxq" path="res://PlayerAssets/Death.png" id="3_3dxwr"]
-[ext_resource type="Texture2D" uid="uid://3ce7ge4spa0p" path="res://BackgroundAssets/Healthbar/lawrence-kayku-frWOcVisp8U-unsplash (1).png" id="3_cv2ot"]
-[ext_resource type="Texture2D" uid="uid://dlyp20463jomn" path="res://BackgroundAssets/BackImage/trees-4830285.png" id="3_e7g38"]
 [ext_resource type="Texture2D" uid="uid://cinqu711fpv7x" path="res://PlayerAssets/Hurt.png" id="4_m7atc"]
 [ext_resource type="Texture2D" uid="uid://87a3ht5vrtw8" path="res://PlayerAssets/Idle.png" id="5_exl80"]
 [ext_resource type="Texture2D" uid="uid://m0r2lkucb5nc" path="res://PlayerAssets/Run.png" id="6_d00iy"]
-[ext_resource type="AudioStream" uid="uid://cfnpwek04aya2" path="res://26_sword_hit_1.wav" id="7_u4dqy"]
-[ext_resource type="AudioStream" uid="uid://cmfgixn2vugtj" path="res://27_sword_miss_1.wav" id="8_gyaed"]
-[ext_resource type="Texture2D" uid="uid://cgm3hmw8slis7" path="res://BackgroundAssets/Healthbar/paul-blenkhorn-tYDjgdmjcz8-unsplash.png" id="10_ybi3c"]
-[ext_resource type="AudioStream" uid="uid://ckibsawyh1hgr" path="res://BackgroundAssets/Zombie_hit (online-audio-converter.com).mp3" id="14_p70nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkri3"]
 size = Vector2(20, 64)
@@ -483,33 +475,6 @@ _data = {
 collision_mask = 4
 script = ExtResource("1_0nf2a")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 100
-visible = false
-
-[node name="PlayerHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_bottom = 0.333333
-offset_right = 34.0
-offset_bottom = 432.0
-value = 30.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = ExtResource("3_1v0vg")
-texture_progress = ExtResource("3_cv2ot")
-metadata/_edit_use_anchors_ = true
-
-[node name="EnemyHealthbar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 1118.0
-offset_right = 1152.0
-offset_bottom = 648.0
-value = 100.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = ExtResource("3_cv2ot")
-texture_progress = ExtResource("2_8s7jw")
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tkri3")
 
@@ -532,15 +497,12 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Healthbar" type="TextureProgressBar" parent="."]
+[node name="Healthbar" type="ProgressBar" parent="."]
 offset_left = -15.0
 offset_top = 32.0
 offset_right = 15.0
 offset_bottom = 36.0
 value = 40.0
-nine_patch_stretch = true
-texture_under = ExtResource("3_e7g38")
-texture_progress = ExtResource("10_ybi3c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -548,15 +510,12 @@ limit_left = 0
 limit_bottom = 440
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_u4dqy")
 volume_db = -10.0
 
 [node name="MissSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_gyaed")
 volume_db = -10.0
 
 [node name="DeadSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_p70nh")
 
 [connection signal="body_entered" from="AnimatedSprite2D/AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bflfhgxnu8is6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nnnch"]
-[ext_resource type="Texture2D" uid="uid://b3alq645pyp2u" path="res://BackgroundAssets/BackImage/neom-wTmGtmGQCjQ-unsplash.png" id="2_ydpal"]
-[ext_resource type="AudioStream" uid="uid://c2vwx5ak11qwn" path="res://BackgroundAssets/Mozart - Eine Kleine Nachtmusik (320 kbps).mp3" id="3_mcpph"]
+[ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://BackgroundAssets/Overlay.png" id="2_buro0"]
+[ext_resource type="AudioStream" uid="uid://df4l4rc8u6yaa" path="res://BackgroundAssets/music/Suspense.mp3" id="3_60oll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mlls"]
 bg_color = Color(0, 1, 0, 1)
@@ -28,10 +28,9 @@ bg_color = Color(0, 1, 0, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_nnnch")
 
-[node name="Neom-wTmGtmGqCjQ-unsplash" type="Sprite2D" parent="."]
-position = Vector2(560, 374)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_ydpal")
+[node name="Overlay" type="Sprite2D" parent="."]
+position = Vector2(569, 342)
+texture = ExtResource("2_buro0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 59.0
@@ -58,10 +57,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_mcpph")
-volume_db = -10.0
-autoplay = true
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_60oll")
 
 [node name="Stages" type="Node2D" parent="."]
 

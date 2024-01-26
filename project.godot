@@ -23,6 +23,10 @@ Savefile="*res://savefile.gd"
 
 window/stretch/mode="canvas_items"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 attack={

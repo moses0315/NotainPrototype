@@ -71,7 +71,7 @@ func take_damage(damage):
 			is_dead = true
 			anim.play("dead")
 			$DeadSound.play()
-			#healthbar.visible = false
+			healthbar.visible = false
 			z_index = -1
 			$CollisionShape2D.set_deferred("disabled", true)
 			await anim.animation_finished
