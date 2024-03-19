@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ig0ibpi38amm"]
+[gd_scene load_steps=15 format=3 uid="uid://ig0ibpi38amm"]
 
 [ext_resource type="Script" path="res://combat.gd" id="1_2u38w"]
 [ext_resource type="AudioStream" uid="uid://qq8rhx8rrl62" path="res://BackgroundAssets/music/[Intense]Tension Suspense Mystery and Thriller background music(No Copyright) Dark Investigation.mp3" id="2_b0yn3"]
 [ext_resource type="Texture2D" uid="uid://bpyiolgff4gu5" path="res://BackgroundAssets/Postapocalypce4/Bright/postapocalypse4.png" id="3_57gnn"]
 [ext_resource type="Texture2D" uid="uid://tr5rdgamkad6" path="res://BackgroundAssets/Tileset.png" id="4_q01n1"]
+[ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://BackgroundAssets/Overlay.png" id="7_ka2ls"]
 [ext_resource type="PackedScene" uid="uid://cixyb3pqegowr" path="res://enemy_slow.tscn" id="8_w0d6b"]
 [ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://player.tscn" id="8_w8dl0"]
 
@@ -315,9 +316,21 @@ texture = ExtResource("4_q01n1")
 [sub_resource type="TileSet" id="TileSet_b33wf"]
 sources/0 = SubResource("TileSetAtlasSource_363s8")
 
-[node name="Stage1" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3cl4"]
+bg_color = Color(0.784314, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvr6s"]
+bg_color = Color(1, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fy6l"]
+bg_color = Color(1, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m4om"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Stage3" type="Node2D"]
 script = ExtResource("1_2u38w")
-stage_number = 1
+stage_number = 3
 
 [node name="Tutorial" type="Label" parent="."]
 visible = false
@@ -362,7 +375,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(-87.5, 232)
+position = Vector2(-108.5, 232)
 shape = SubResource("RectangleShape2D_0hjwg")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -396,3 +409,45 @@ scale = Vector2(2, 2)
 position = Vector2(1156, 345)
 max_health = 3000
 attack_power = 1000
+
+[node name="ClearCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ClearCanvasLayer"]
+position = Vector2(576, 321.25)
+scale = Vector2(0.445556, 0.392917)
+texture = ExtResource("7_ka2ls")
+
+[node name="Label" type="Label" parent="ClearCanvasLayer"]
+offset_left = 434.0
+offset_top = 119.0
+offset_right = 751.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 50
+text = "STAGE CLEAR"
+
+[node name="Label2" type="Label" parent="ClearCanvasLayer"]
+offset_left = 400.0
+offset_top = 232.0
+offset_right = 928.0
+offset_bottom = 301.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0.541176, 0.541176, 0.541176, 1)
+theme_override_font_sizes/font_size = 50
+text = "Congratulations"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="ClearCanvasLayer"]
+offset_left = 550.0
+offset_top = 482.0
+offset_right = 726.0
+offset_bottom = 559.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_u3cl4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vvr6s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2fy6l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8m4om")
+text = "Continue"
+
+[connection signal="pressed" from="ClearCanvasLayer/ContinueButton" to="." method="_on_continue_button_pressed"]

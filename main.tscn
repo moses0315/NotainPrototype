@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bflfhgxnu8is6"]
+[gd_scene load_steps=16 format=3 uid="uid://bflfhgxnu8is6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nnnch"]
 [ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://BackgroundAssets/Overlay.png" id="2_buro0"]
+[ext_resource type="Texture2D" uid="uid://bg2t66oko53tb" path="res://BackgroundAssets/adventure-2528477_1920.png" id="2_qf1u2"]
 [ext_resource type="AudioStream" uid="uid://df4l4rc8u6yaa" path="res://BackgroundAssets/music/Suspense.mp3" id="3_60oll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mlls"]
@@ -25,48 +26,41 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6vem"]
 bg_color = Color(0, 1, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yg7we"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8jcm"]
+bg_color = Color(1, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36frh"]
+bg_color = Color(1, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju3c5"]
+bg_color = Color(0.784314, 0, 0, 0.784314)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_nnnch")
-
-[node name="Overlay" type="Sprite2D" parent="."]
-position = Vector2(569, 342)
-texture = ExtResource("2_buro0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 59.0
-offset_right = 302.0
-offset_bottom = 648.0
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Start"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Options"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Quit"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_60oll")
 
+[node name="Overlay2" type="Sprite2D" parent="."]
+position = Vector2(530, 383)
+texture = ExtResource("2_buro0")
+
+[node name="Overlay" type="Sprite2D" parent="."]
+position = Vector2(96, 45)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qf1u2")
+centered = false
+
 [node name="Stages" type="Node2D" parent="."]
 
 [node name="1" type="Button" parent="Stages"]
-offset_left = 462.0
-offset_top = 328.0
-offset_right = 522.0
-offset_bottom = 359.0
+offset_left = 563.0
+offset_top = 410.0
+offset_right = 623.0
+offset_bottom = 441.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_3mlls")
@@ -76,10 +70,10 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_haq8f")
 text = "Stage1"
 
 [node name="2" type="Button" parent="Stages"]
-offset_left = 599.0
-offset_top = 283.0
-offset_right = 659.0
-offset_bottom = 314.0
+offset_left = 713.0
+offset_top = 268.0
+offset_right = 773.0
+offset_bottom = 299.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_xyllt")
@@ -89,10 +83,10 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_uw4jq")
 text = "Stage2"
 
 [node name="3" type="Button" parent="Stages"]
-offset_left = 747.0
-offset_top = 208.0
-offset_right = 807.0
-offset_bottom = 239.0
+offset_left = 944.0
+offset_top = 150.0
+offset_right = 1004.0
+offset_bottom = 181.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_b6vem")
@@ -100,6 +94,35 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ka0bb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5soq5")
 theme_override_styles/focus = SubResource("StyleBoxFlat_uw4jq")
 text = "Stage3"
+
+[node name="VBoxContainer" type="Node2D" parent="."]
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+offset_right = 243.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_yg7we")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+offset_top = 154.0
+offset_right = 243.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 50
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+offset_top = 308.0
+offset_right = 243.0
+offset_bottom = 458.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_h8jcm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_36frh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ju3c5")
+text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

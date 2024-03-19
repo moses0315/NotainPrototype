@@ -1,5 +1,6 @@
 extends Node2D
 
+var is_quit_button_focused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#SaveLoad.saveGame()#reset game
@@ -13,7 +14,8 @@ func _ready():
 			stage.disabled = false
 			stage.connect("pressed", start_combat.bind(stage.name))
 		else:
-			stage.disabled = true 
+			stage.disabled = true
+	
 	print(Savefile.current_stage)
 	
 	if not $BGM.playing:
@@ -25,11 +27,20 @@ func start_combat(stage_number:StringName):
 	get_tree().change_scene_to_file("res://stage"+stage_number+".tscn")
 
 func _on_start_button_pressed():
-	pass
-
+	#$Stages.visible = true
+	#$Overlay.visible = true
+	$VBoxContainer/StartButton.text = "You have
+	already started."
 
 func _on_options_button_pressed():
 	pass
 
 func _on_quit_button_pressed():
-	get_tree().quit()
+	if is_quit_button_focused:
+		get_tree().quit()
+	else:
+		$VBoxContainer/QuitButton.text = "If you really
+		want to quit,
+		press it again."
+		is_quit_button_focused = true
+

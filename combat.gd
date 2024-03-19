@@ -37,5 +37,9 @@ func _process(delta):
 		if stage_number == Savefile.current_stage:
 			Savefile.current_stage +=1
 			SaveLoad.saveGame()
-		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://main.tscn")
+			print(Savefile.current_stage)
+		await get_tree().create_timer(1).timeout
+		$ClearCanvasLayer.visible = true
+
+func _on_continue_button_pressed():
+	get_tree().change_scene_to_file("res://main.tscn")
