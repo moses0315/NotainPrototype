@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://bflfhgxnu8is6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nnnch"]
-[ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://BackgroundAssets/Overlay.png" id="2_buro0"]
-[ext_resource type="Texture2D" uid="uid://bg2t66oko53tb" path="res://BackgroundAssets/adventure-2528477_1920.png" id="2_qf1u2"]
-[ext_resource type="AudioStream" uid="uid://df4l4rc8u6yaa" path="res://BackgroundAssets/music/Suspense.mp3" id="3_60oll"]
+[ext_resource type="AudioStream" uid="uid://chtmvahm1e8rq" path="res://Assets/SoundAssets/cyberpunk-street.mp3" id="2_grvam"]
+[ext_resource type="Texture2D" uid="uid://crk8hjihsc84d" path="res://Assets/BackgroundAssets/Overlay.png" id="3_oegwx"]
+[ext_resource type="Texture2D" uid="uid://d2rl8ifi7351r" path="res://Assets/BackgroundAssets/adventure-2528477_1920.png" id="4_7x83y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mlls"]
 bg_color = Color(0, 1, 0, 1)
@@ -42,16 +42,16 @@ bg_color = Color(0.784314, 0, 0, 0.784314)
 script = ExtResource("1_nnnch")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_60oll")
+stream = ExtResource("2_grvam")
 
 [node name="Overlay2" type="Sprite2D" parent="."]
 position = Vector2(530, 383)
-texture = ExtResource("2_buro0")
+texture = ExtResource("3_oegwx")
 
 [node name="Overlay" type="Sprite2D" parent="."]
 position = Vector2(96, 45)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qf1u2")
+texture = ExtResource("4_7x83y")
 centered = false
 
 [node name="Stages" type="Node2D" parent="."]

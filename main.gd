@@ -16,8 +16,6 @@ func _ready():
 		else:
 			stage.disabled = true
 	
-	print(Savefile.current_stage)
-	
 	if not $BGM.playing:
 		await get_tree().create_timer(1).timeout
 		$BGM.play()

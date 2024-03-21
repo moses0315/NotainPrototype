@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxwhyuct2abqm"
+path="res://.godot/imported/death-scream-male-smartsound-fx-2-2-00-01.mp3-ff7433adda5a61d144e085824cf3a30a.mp3str"
+
+[deps]
+
+source_file="res://Old Assets/PlayerAssets/death-scream-male-smartsound-fx-2-2-00-01.mp3"
+dest_files=["res://.godot/imported/death-scream-male-smartsound-fx-2-2-00-01.mp3-ff7433adda5a61d144e085824cf3a30a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

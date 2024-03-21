@@ -9,6 +9,7 @@ const speed = 250
 var health = 200
 var attack_power = 10
 var is_attacking = false
+var is_rolling = false
 var is_hurt = false
 var is_dead = false
 
@@ -32,6 +33,8 @@ func _physics_process(delta):
 			
 	if is_attacking or is_hurt:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	elif is_rolling:
+		velocity.x = direction * speed * 2
 	elif direction:
 		velocity.x = direction * speed
 		anim.play("run")
@@ -39,14 +42,22 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		anim.play("idle")
 			
-	if not is_attacking and not is_hurt:
+	if not is_attacking and not is_rolling and not is_hurt:
 		attack()
+		roll()
 	move_and_slide()
 	
 func attack():
 	if Input.is_action_pressed("attack"):
 		is_attacking = true
+		is_rolling = false
 		anim.play("attack")
+
+func roll():
+	if Input.is_action_pressed("roll"):
+		is_rolling = true
+		is_attacking = false
+		anim.play("roll")
 		
 func take_damage(damage):
 	if not is_dead:
@@ -54,6 +65,7 @@ func take_damage(damage):
 		$HitSound.stop()
 		$MissSound.stop()
 		is_attacking = false
+		is_rolling = false
 		health -= damage
 		is_hurt = true
 		if health <= 0:
@@ -79,4 +91,7 @@ func _on_animation_player_animation_finished(anim_name):
 			anim.play("idle")
 		elif anim_name == "attack":
 			is_attacking = false
+			anim.play("idle")
+		elif anim_name == "roll":
+			is_rolling = false
 			anim.play("idle")

@@ -1,18 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ig0ibpi38amm"]
+[gd_scene load_steps=11 format=3 uid="uid://d1ft1llant6g0"]
 
 [ext_resource type="Script" path="res://combat.gd" id="1_2u38w"]
-[ext_resource type="AudioStream" uid="uid://qq8rhx8rrl62" path="res://BackgroundAssets/music/[Intense]Tension Suspense Mystery and Thriller background music(No Copyright) Dark Investigation.mp3" id="2_b0yn3"]
-[ext_resource type="Texture2D" uid="uid://bpyiolgff4gu5" path="res://BackgroundAssets/Postapocalypce4/Bright/postapocalypse4.png" id="3_57gnn"]
-[ext_resource type="Texture2D" uid="uid://tr5rdgamkad6" path="res://BackgroundAssets/Tileset.png" id="4_q01n1"]
-[ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://BackgroundAssets/Overlay.png" id="7_ka2ls"]
-[ext_resource type="PackedScene" uid="uid://cixyb3pqegowr" path="res://enemy_slow.tscn" id="8_w0d6b"]
+[ext_resource type="Texture2D" uid="uid://cq8s7px8of7pu" path="res://Old Assets/BackgroundAssets/Overlay.png" id="7_ka2ls"]
 [ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://player.tscn" id="8_w8dl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjwg"]
 size = Vector2(217, 625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_363s8"]
-texture = ExtResource("4_q01n1")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -316,16 +311,16 @@ texture = ExtResource("4_q01n1")
 [sub_resource type="TileSet" id="TileSet_b33wf"]
 sources/0 = SubResource("TileSetAtlasSource_363s8")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3cl4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sygoy"]
 bg_color = Color(0.784314, 0, 0, 0.784314)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvr6s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pepb"]
 bg_color = Color(1, 0, 0, 0.392157)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fy6l"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byfmy"]
 bg_color = Color(1, 0, 0, 0.784314)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m4om"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jc0q"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Stage3" type="Node2D"]
@@ -361,14 +356,11 @@ text = "
 Tip: Hit and Run"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_b0yn3")
 autoplay = true
 
 [node name="DeadBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_b0yn3")
 
 [node name="ClearBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_b0yn3")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -385,7 +377,6 @@ motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_57gnn")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -398,17 +389,9 @@ layer_0/tile_data = PackedInt32Array(2097152, 131072, 0, 2162688, 131072, 1, 222
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemySlow" parent="Enemies" instance=ExtResource("8_w0d6b")]
-position = Vector2(977, 449)
-
 [node name="Player" parent="." instance=ExtResource("8_w8dl0")]
 position = Vector2(370, 449)
 scale = Vector2(2, 2)
-
-[node name="EnemySlow" parent="." instance=ExtResource("8_w0d6b")]
-position = Vector2(1156, 345)
-max_health = 3000
-attack_power = 1000
 
 [node name="ClearCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -444,10 +427,10 @@ offset_right = 726.0
 offset_bottom = 559.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_u3cl4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_vvr6s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2fy6l")
-theme_override_styles/focus = SubResource("StyleBoxFlat_8m4om")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sygoy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0pepb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_byfmy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6jc0q")
 text = "Continue"
 
 [connection signal="pressed" from="ClearCanvasLayer/ContinueButton" to="." method="_on_continue_button_pressed"]
