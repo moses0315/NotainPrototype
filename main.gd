@@ -22,8 +22,8 @@ func _ready():
 
 
 func start_combat(stage_number:StringName):
-	get_tree().change_scene_to_file("res://stage"+stage_number+".tscn")
-
+	get_tree().change_scene_to_file("res://Stages/stage"+stage_number+".tscn")
+"res://Stages/stage1.tscn"
 func _on_start_button_pressed():
 	#$Stages.visible = true
 	#$Overlay.visible = true

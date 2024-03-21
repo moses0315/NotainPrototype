@@ -7,9 +7,10 @@ extends CharacterBody2D
 const speed = 250
 
 var health = 200
-var attack_power = 100
+var attack_power = 20
 var is_attacking = false
 var is_rolling = false
+var roll_cooldowned = true
 var is_hurt = false
 var is_dead = false
 
@@ -18,6 +19,7 @@ func _ready():
 	$AnimatedSprite2D/AttackArea2D/CollisionShape2D.disabled = true
 	healthbar.max_value = health
 	
+@warning_ignore("unused_parameter")
 func _physics_process(delta):
 	healthbar.value = health
 	if is_dead:
@@ -25,7 +27,8 @@ func _physics_process(delta):
 
 	var direction = Input.get_axis("left", "right")
 	
-	if not is_attacking:
+	#Not change direction when attack or roll
+	if not is_attacking and not is_rolling:
 		if direction == -1:
 			sprite.scale.x = -1
 		elif direction == 1:
@@ -34,7 +37,10 @@ func _physics_process(delta):
 	if is_attacking or is_hurt:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	elif is_rolling:
-		velocity.x = direction * speed * 2
+		if sprite.scale.x == -1:
+			velocity.x = -speed * 2.5
+		elif sprite.scale.x == 1:
+			velocity.x = speed * 2.5
 	elif direction:
 		velocity.x = direction * speed
 		anim.play("run")
@@ -54,10 +60,13 @@ func attack():
 		anim.play("attack")
 
 func roll():
-	if Input.is_action_pressed("roll"):
+	if Input.is_action_pressed("roll") and roll_cooldowned:
 		is_rolling = true
 		is_attacking = false
 		anim.play("roll")
+		roll_cooldowned = false
+		await get_tree().create_timer(1).timeout
+		roll_cooldowned = true
 		
 func take_damage(damage):
 	if not is_dead:
@@ -72,7 +81,7 @@ func take_damage(damage):
 			is_dead = true
 			anim.play("dead")
 			$DeadSound.play()
-			$CollisionShape2D.set_deferred("disabled", true)
+			#$CollisionShape2D.set_deferred("disabled", true)
 			await anim.animation_finished
 		else:
 			anim.play("hurt")

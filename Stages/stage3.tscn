@@ -1,18 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://8w3w2i8t0sya"]
+[gd_scene load_steps=14 format=3 uid="uid://b1hbtcndv86ck"]
 
-[ext_resource type="Script" path="res://Stages/combat.gd" id="1_43xa8"]
-[ext_resource type="AudioStream" uid="uid://chtmvahm1e8rq" path="res://Assets/SoundAssets/cyberpunk-street.mp3" id="2_wlhp1"]
-[ext_resource type="Texture2D" uid="uid://d2rl8ifi7351r" path="res://Assets/BackgroundAssets/adventure-2528477_1920.png" id="2_x38gq"]
-[ext_resource type="Texture2D" uid="uid://ivrh228dk3qi" path="res://Assets/BackgroundAssets/Tileset.png" id="3_yfgfq"]
-[ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://Characters/player.tscn" id="4_wdfew"]
-[ext_resource type="Texture2D" uid="uid://crk8hjihsc84d" path="res://Assets/BackgroundAssets/Overlay.png" id="5_c50is"]
-[ext_resource type="PackedScene" uid="uid://c18xgpf54aevr" path="res://Characters/enemy.tscn" id="6_yfvjh"]
+[ext_resource type="Script" path="res://Stages/combat.gd" id="1_wegcv"]
+[ext_resource type="AudioStream" uid="uid://chtmvahm1e8rq" path="res://Assets/SoundAssets/cyberpunk-street.mp3" id="2_d04vm"]
+[ext_resource type="Texture2D" uid="uid://d2rl8ifi7351r" path="res://Assets/BackgroundAssets/adventure-2528477_1920.png" id="3_580f4"]
+[ext_resource type="Texture2D" uid="uid://ivrh228dk3qi" path="res://Assets/BackgroundAssets/Tileset.png" id="4_d78pl"]
+[ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://Characters/player.tscn" id="5_botr4"]
+[ext_resource type="Texture2D" uid="uid://crk8hjihsc84d" path="res://Assets/BackgroundAssets/Overlay.png" id="6_oynsu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjwg"]
 size = Vector2(217, 625)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ox50j"]
-texture = ExtResource("3_yfgfq")
+texture = ExtResource("4_d78pl")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -328,11 +327,12 @@ bg_color = Color(1, 0, 0, 0.784314)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jc0q"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Stage1" type="Node2D"]
-script = ExtResource("1_43xa8")
-stage_number = 1
+[node name="Stage3" type="Node2D"]
+script = ExtResource("1_wegcv")
+stage_number = 3
 
 [node name="Tutorial" type="Label" parent="."]
+visible = false
 offset_left = 186.0
 offset_top = 217.0
 offset_right = 1104.0
@@ -346,6 +346,7 @@ ATTACK: S,↓,Space
 "
 
 [node name="Tutorial2" type="Label" parent="."]
+visible = false
 offset_left = 186.0
 offset_top = 217.0
 offset_right = 953.0
@@ -359,14 +360,14 @@ text = "
 Tip: Hit and Run"
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_wlhp1")
+stream = ExtResource("2_d04vm")
 autoplay = true
 
 [node name="DeadBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_wlhp1")
+stream = ExtResource("2_d04vm")
 
 [node name="ClearBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_wlhp1")
+stream = ExtResource("2_d04vm")
 
 [node name="Wall" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -383,7 +384,7 @@ motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_x38gq")
+texture = ExtResource("3_580f4")
 centered = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -396,16 +397,7 @@ layer_0/tile_data = PackedInt32Array(1769472, 131072, 0, 1769473, 196608, 0, 176
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyFast3" parent="Enemies" instance=ExtResource("6_yfvjh")]
-position = Vector2(1000, 435)
-
-[node name="EnemyFast4" parent="Enemies" instance=ExtResource("6_yfvjh")]
-position = Vector2(-100, 435)
-
-[node name="EnemyFast5" parent="Enemies" instance=ExtResource("6_yfvjh")]
-position = Vector2(1480, 435)
-
-[node name="Player" parent="." instance=ExtResource("4_wdfew")]
+[node name="Player" parent="." instance=ExtResource("5_botr4")]
 position = Vector2(370, 435)
 scale = Vector2(2, 2)
 
@@ -415,7 +407,7 @@ visible = false
 [node name="Sprite2D" type="Sprite2D" parent="ClearCanvasLayer"]
 position = Vector2(576, 321.25)
 scale = Vector2(0.445556, 0.392917)
-texture = ExtResource("5_c50is")
+texture = ExtResource("6_oynsu")
 
 [node name="Label" type="Label" parent="ClearCanvasLayer"]
 offset_left = 434.0
