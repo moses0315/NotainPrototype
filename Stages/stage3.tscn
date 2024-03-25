@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1hbtcndv86ck"]
+[gd_scene load_steps=15 format=3 uid="uid://b1hbtcndv86ck"]
 
 [ext_resource type="Script" path="res://Stages/combat.gd" id="1_wegcv"]
 [ext_resource type="AudioStream" uid="uid://chtmvahm1e8rq" path="res://Assets/SoundAssets/cyberpunk-street.mp3" id="2_d04vm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ivrh228dk3qi" path="res://Assets/BackgroundAssets/Tileset.png" id="4_d78pl"]
 [ext_resource type="PackedScene" uid="uid://rye083gfdwpb" path="res://Characters/player.tscn" id="5_botr4"]
 [ext_resource type="Texture2D" uid="uid://crk8hjihsc84d" path="res://Assets/BackgroundAssets/Overlay.png" id="6_oynsu"]
+[ext_resource type="PackedScene" uid="uid://bhouq6cvpo5f4" path="res://Characters/enemy_long.tscn" id="7_0a550"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjwg"]
 size = Vector2(217, 625)
@@ -369,15 +370,15 @@ stream = ExtResource("2_d04vm")
 [node name="ClearBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_d04vm")
 
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="ParallaxBackground"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Wall"]
 position = Vector2(-108.5, 232)
 shape = SubResource("RectangleShape2D_0hjwg")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1152, 0)
@@ -394,12 +395,6 @@ motion_mirroring = Vector2(1152, 0)
 tile_set = SubResource("TileSet_s85x1")
 format = 2
 layer_0/tile_data = PackedInt32Array(1769472, 131072, 0, 1769473, 196608, 0, 1769474, 262144, 0, 1769475, 327680, 0, 1769476, 393216, 0, 1769477, 131072, 0, 1769478, 196608, 0, 1769479, 262144, 0, 1769480, 327680, 0, 1769481, 393216, 0, 1769482, 131072, 0, 1769483, 196608, 0, 1769484, 262144, 0, 1769485, 327680, 0, 1769486, 393216, 0, 1769487, 131072, 0, 1769488, 196608, 0, 1769489, 262144, 0, 1769490, 327680, 0, 1769491, 393216, 0, 1769492, 131072, 0, 1769493, 196608, 0, 1769494, 262144, 0, 1769495, 327680, 0, 1769496, 393216, 0, 1769497, 131072, 0, 1769498, 196608, 0, 1769499, 262144, 0, 1769500, 327680, 0, 1769501, 393216, 0, 1769502, 131072, 0, 1769503, 196608, 0, 1769504, 262144, 0, 1769505, 327680, 0, 1769506, 393216, 0, 1769507, 131072, 0, 1769508, 196608, 0, 1769509, 262144, 0, 1769510, 327680, 0, 1769511, 393216, 0, 1769512, 131072, 0, 1769513, 196608, 0, 1769514, 262144, 0, 1769515, 327680, 0, 1769516, 393216, 0, 1769517, 131072, 0, 1769518, 131072, 0, 1769519, 196608, 0, 1769520, 262144, 0, 1769521, 327680, 0, 1769522, 393216, 0, 1769523, 131072, 0, 1769524, 196608, 0, 1769525, 262144, 0, 1769526, 327680, 0, 1769527, 393216, 0, 1769528, 131072, 0, 1769529, 196608, 0, 1769530, 262144, 0, 1769531, 327680, 0, 1769532, 393216, 0, 1769533, 131072, 0, 1769534, 196608, 0, 1769535, 262144, 0, 1769536, 327680, 0, 1769537, 393216, 0, 1769538, 131072, 0, 1769539, 196608, 0, 1769540, 262144, 0, 1769541, 131072, 0, 1769542, 196608, 0, 1769543, 262144, 0, 1572886, 131072, 0)
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("5_botr4")]
-position = Vector2(370, 435)
-scale = Vector2(2, 2)
 
 [node name="ClearCanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -440,5 +435,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0pepb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_byfmy")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6jc0q")
 text = "Continue"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyLong" parent="Enemies" instance=ExtResource("7_0a550")]
+position = Vector2(748, 435)
+
+[node name="Player" parent="." instance=ExtResource("5_botr4")]
+position = Vector2(370, 435)
+scale = Vector2(2, 2)
 
 [connection signal="pressed" from="ClearCanvasLayer/ContinueButton" to="." method="_on_continue_button_pressed"]

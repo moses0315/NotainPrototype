@@ -10,6 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	#Play DeadBGM
 	if $Player.is_dead and not is_player_dead:
@@ -43,3 +44,11 @@ func _process(delta):
 
 func _on_continue_button_pressed():
 	get_tree().change_scene_to_file("res://main.tscn")
+
+
+func _on_wave_1_body_entered(body):
+	pass # Replace with function body.
+func _on_wave_2_body_entered(body):
+	pass # Replace with function body.
+func _on_wave_3_body_entered(body):
+	pass # Replace with function body.

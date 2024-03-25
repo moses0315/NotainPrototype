@@ -6,8 +6,8 @@ extends CharacterBody2D
 
 const speed = 250
 
-var health = 200
-var attack_power = 20
+var health = 300
+var attack_power = 10
 var is_attacking = false
 var is_rolling = false
 var roll_cooldowned = true
@@ -65,7 +65,7 @@ func roll():
 		is_attacking = false
 		anim.play("roll")
 		roll_cooldowned = false
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		roll_cooldowned = true
 		
 func take_damage(damage):
